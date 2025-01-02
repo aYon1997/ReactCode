@@ -1,4 +1,13 @@
-// import { consoleMyName } from 'libsssssssssssss';
-// console.log(consoleMyName());
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+// import App from './App';
+import './index.css';
 
-export const getRandom = () => Math.random;
+// 获取public目录下的id是root的div
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+        <div className='App'>我是React</div>
+        {/* <App /> */}
+    </React.StrictMode>
+);
