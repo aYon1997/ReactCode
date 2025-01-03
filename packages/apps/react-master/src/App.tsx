@@ -10,14 +10,17 @@
 
 import React from 'react';
 
-import './App.css';
+import styles from './App.module.less';
 
 type Props = {};
 
 function App({}: Props) {
     return (
         <div className='App'>
-            <div className='my-2 text-blue-800'>Hello world !</div>
+            <div className='bg - blue - 500 text - white p - 4 rounded'>
+                Hello world!
+            </div>
+            <div className={styles.container}>Good morning!</div>
         </div>
     );
 }

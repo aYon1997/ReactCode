@@ -94,6 +94,7 @@ pnpm add @typescript-eslint/eslint-plugin -D -w
 - css相关
   style-loader
   css-loader
+  (这玩意很坑, 默认安装最新的是^7.1.2会报undefined, 只有^6.x才能用,推荐装^6.8.1, github上的css-loader有issue, https://blog.csdn.net/weixin_44523653/article/details/140782444)
   less
   less-loader
   postcss

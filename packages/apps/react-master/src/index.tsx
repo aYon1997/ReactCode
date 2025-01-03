@@ -7,7 +7,6 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root') as Element);
 root.render(
     <React.StrictMode>
-        {/* <div className='App'>我是React</div> */}
         <App />
     </React.StrictMode>
 );
