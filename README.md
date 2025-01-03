@@ -117,3 +117,11 @@ pnpm add @typescript-eslint/eslint-plugin -D -w
 
 - 配置webpack
   ![图片示例](/success.png)
+
+## 内置包作为命令行调用的能力
+
+1、libsssssssssssss中，package.json中增加bin字段的配置
+
+2、@hhxxyy/react-master中，重新安装libsssssssssssss
+
+3、在@hhxxyy/react-master的package.json中配置命令，从而让package.json去扫描node_modules的bin

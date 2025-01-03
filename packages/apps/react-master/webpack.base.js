@@ -6,7 +6,7 @@ module.exports = function (isDev) {
     return {
         // 1. 输入输出部分
         // 最基础的，就是我的入口
-        entry: path.resolve(__dirname, './src/index.js'),
+        entry: path.resolve(__dirname, './src/index.tsx'),
         output: {
             // 打包输出的结果路径
             path: path.resolve(__dirname, './dist'),
