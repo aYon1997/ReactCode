@@ -127,7 +127,8 @@ pnpm add @typescript-eslint/eslint-plugin -D -w
 
 3、在@hhxxyy/react-master的package.json中配置命令，从而让package.json去扫描node_modules的bin
 
-## 分支说明（作者自己的备忘录，无需关注）
+## 个人备忘录（作者自己的备忘录，无需关注）
 
 1、master、dev：个人用来开发业务的分支
 2、backup_template: 刚搭建完的项目的模板备份，不存在业务逻辑
+3、打包时记得切换webpack.base.js中的publicPath，github pages 改成相对路径打包，其他情况改成绝对路径打包
