@@ -17,7 +17,9 @@ module.exports = function (isDev) {
             // webpack 5 内置，构建前删除一下 dist
             clean: true,
             // 打包后的公共路径
-            publicPath: '/',
+            // publicPath: '/',
+            // 由于我要在github pages上发布，为了让它我这里只能设置为相对路径
+            publicPath: './',
         },
 
         // 2. resolve 部分
