@@ -1,7 +1,6 @@
 {
     "name": "@hhxxyy/react-master",
     "version": "1.0.0",
-    "homepage": ".",
     "description": "",
     "main": "src/index.tsx",
     "scripts": {

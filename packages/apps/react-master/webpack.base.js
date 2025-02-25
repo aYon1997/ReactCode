@@ -117,6 +117,8 @@ module.exports = function (isDev) {
             new HtmlWebpackPlugin({
                 // 我们把生成的 js 和 css, 注入到一个html 模板中
                 template: path.resolve(__dirname, './public/index.html'),
+                // 浏览器标签页标题
+                title: '心灵SPA',
             }),
             new MiniCssExtractPlugin({
                 filename: isDev
