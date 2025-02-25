@@ -91,6 +91,8 @@ module.exports = function (isDev) {
                 {
                     // webpack 5 以前，要用 url|file-loader，现在内置了
                     test: /\.(png|jpg|jpeg|webp|gif|svg)$/,
+                    // 加这个属性，图片才能解析成功
+                    type: 'asset',
                     generator: {
                         filename: 'static/images/[name].[contenthash:8][ext]',
                     },
