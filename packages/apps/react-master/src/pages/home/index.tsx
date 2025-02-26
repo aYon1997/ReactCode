@@ -13,7 +13,7 @@ const MyCard = () => {
             {HOME_CARD_LIST.map((item, index) => (
                 // flex-grow: 1  在有剩余空间时自动扩展，占据剩余的宽度
                 <img
-                    className='px-8 py-4 flex-grow'
+                    className='px-8 py-4 flex-grow w-2/5'
                     key={'card_img_' + index}
                     src={item.imgUrl}
                     alt={'img_' + index}
