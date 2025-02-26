@@ -1,14 +1,9 @@
 import React from 'react';
 import { Swiper, Toast } from 'antd-mobile';
-// @ts-ignore
-import image1 from './a.jpeg';
-// @ts-ignore
-import image2 from './b.jpeg';
+
 const url = [
-    image1,
-    image2,
-    // 'https://img1.baidu.com/it/u=1998643210,2665525468&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1740589200&t=353455051454b59e76a58eb9fd943649',
-    // 'https://img0.baidu.com/it/u=1552106092,2626691830&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1740589200&t=7e3a75309577d42eb84b54766349b168',
+    'https://ayon1997.github.io/ImgCDN/swipter_1.jpeg',
+    'https://ayon1997.github.io/ImgCDN/swipter_2.jpeg',
 ];
 
 const onHandleClick = (idx: number) => {
@@ -25,8 +20,9 @@ const items = url.map((color, index) => (
             <img
                 src={color}
                 alt={`Image ${index + 1}`}
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                style={{ width: '100%', height: '100%' }}
             />
+            {/* objectFit: 'contain' 选用这个样式， 元素内容（如图片）会按其原始的宽高比进行缩放，以完全适应容器的尺寸，同时保证内容不会被裁剪 */}
         </div>
     </Swiper.Item>
 ));

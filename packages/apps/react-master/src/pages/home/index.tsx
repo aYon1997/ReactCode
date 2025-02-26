@@ -1,6 +1,6 @@
 import React from 'react';
 import Swiper from '../../components/swiper/index';
-import { Card, Toast } from 'antd-mobile';
+import { Toast } from 'antd-mobile';
 import { HOME_CARD_LIST } from './const';
 
 const onHandleClick = (idx: number) => {
@@ -9,16 +9,16 @@ const onHandleClick = (idx: number) => {
 
 const MyCard = () => {
     return (
-        <div className='flex justify-between flex-wrap'>
+        <div className='flex flex-wrap items-center justify-between'>
             {HOME_CARD_LIST.map((item, index) => (
-                <Card
-                    title={item.title}
+                // flex-grow: 1  在有剩余空间时自动扩展，占据剩余的宽度
+                <img
+                    className='px-8 py-4 flex-grow'
+                    key={'card_img_' + index}
+                    src={item.imgUrl}
+                    alt={'img_' + index}
                     onClick={() => onHandleClick(index)}
-                    key={index}
-                    className={item.classConfig}
-                >
-                    {item.subtitle}
-                </Card>
+                />
             ))}
         </div>
     );
