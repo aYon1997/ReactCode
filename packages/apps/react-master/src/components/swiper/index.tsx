@@ -1,26 +1,31 @@
 import React from 'react';
 import { Swiper, Toast } from 'antd-mobile';
 
-const url = ['#e0eaf6', '#f2ebe3'];
+const url = [
+    {
+        from: '#fff2f1',
+        to: '#ffcf94',
+    },
+    {
+        from: '#f3f8fe',
+        to: '#e4edf4',
+    },
+];
 
 const onHandleClick = (idx: number) => {
     Toast.show(`你点击了广告位 ${idx + 1}`);
 };
 
-const items = url.map((color, index) => (
+const items = url.map((item, index) => (
     <Swiper.Item key={index}>
         <div
-            style={{ background: color }}
+            style={{
+                background: `linear-gradient(to right, ${item.from},${item.to})`,
+            }}
             className='h-52 p-1 cursor-pointer'
             onClick={() => onHandleClick(index)}
         >
             广告位
-            {/* <img
-                src={color}
-                alt={`Image ${index + 1}`}
-                style={{ width: '100%', height: '100%' }}
-            /> */}
-            {/* objectFit: 'contain' 选用这个样式， 元素内容（如图片）会按其原始的宽高比进行缩放，以完全适应容器的尺寸，同时保证内容不会被裁剪 */}
         </div>
     </Swiper.Item>
 ));
