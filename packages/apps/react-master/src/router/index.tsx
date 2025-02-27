@@ -2,6 +2,8 @@ import React from 'react';
 import { Outlet, RouteObject } from 'react-router-dom';
 import Home from '../pages/home';
 import Test from '../pages/test';
+import TestDetail from '../pages/test/detail';
+import TestDetailQuestions from '../pages/test/questions';
 
 export interface extraBizObject {
     title?: string;
@@ -20,5 +22,15 @@ export const router: Array<ZHRouter> = [
         path: '/test',
         element: <Test />,
         title: '轻松一测',
+    },
+    {
+        path: '/test_detail',
+        element: <TestDetail />,
+        title: '测试详情',
+    },
+    {
+        path: '/test_detail_questions',
+        element: <TestDetailQuestions />,
+        title: '测试详情问题',
     },
 ];

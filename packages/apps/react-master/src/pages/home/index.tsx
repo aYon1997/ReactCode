@@ -44,7 +44,7 @@ const MyCard = () => {
 const Home = () => {
     return (
         <>
-            <div className='h-60 pt-4 px-4 pb-2 bg-gradient-to-r from-[#689acb] to-[#6fa8d5]'>
+            <div className='pt-4 px-4 pb-2 bg-gradient-to-r from-[#689acb] to-[#6fa8d5]'>
                 <Swiper />
             </div>
             <MyCard />

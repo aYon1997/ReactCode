@@ -1,0 +1,56 @@
+import React from 'react';
+import { Card, Button, Divider } from 'antd-mobile';
+import { TEST_CARD_LIST, TEST_HEADER_IMG, TEST_DETAIL_TO_PATH } from './const';
+import { useNavigate } from 'react-router-dom';
+
+const Test = () => {
+    const navigate = useNavigate();
+    const onStartTestClick = () => {
+        navigate(TEST_DETAIL_TO_PATH);
+    };
+    return (
+        <>
+            <img src={TEST_HEADER_IMG} alt='img' className='w-full' />
+            {TEST_CARD_LIST.map((item, index) => (
+                <div key={index}>
+                    <Card>
+                        <div className='flex'>
+                            <img
+                                src={item.imgUrl}
+                                alt='img'
+                                className='w-44 h-44 rounded-2xl'
+                            />
+                            <div className='flex flex-col justify-between py-6 ml-4'>
+                                <div className='text-lg font-bold'>
+                                    {item.title}
+                                </div>
+                                <Button
+                                    className='w-28'
+                                    color='primary'
+                                    block
+                                    shape='rounded'
+                                    style={{
+                                        '--background-color': '#689acd',
+                                        '--border-color': '#689acd',
+                                        '--text-color': '#f1fefd',
+                                    }}
+                                    onClick={() => onStartTestClick()}
+                                >
+                                    开始测试
+                                </Button>
+                            </div>
+                        </div>
+                    </Card>
+                    <Divider
+                        style={{
+                            color: '#ddd',
+                            borderColor: '#ddd',
+                        }}
+                    />
+                </div>
+            ))}
+        </>
+    );
+};
+
+export default Test;
