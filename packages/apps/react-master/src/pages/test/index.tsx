@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Button, Divider } from 'antd-mobile';
 import { TEST_CARD_LIST, TEST_HEADER_IMG, TEST_DETAIL_TO_PATH } from './const';
 import { useNavigate } from 'react-router-dom';
+import LazyImg from '../../components/lazyImg/index';
 
 const Test = () => {
     const navigate = useNavigate();
@@ -10,15 +11,37 @@ const Test = () => {
     };
     return (
         <>
-            <img src={TEST_HEADER_IMG} alt='img' className='w-full' />
+            <LazyImg
+                src={TEST_HEADER_IMG}
+                alt='img'
+                className='w-full h-96'
+                loading='lazy'
+                loadingconfig={{
+                    className:
+                        'w-full h-96 flex justify-center items-center flex-col bg-gray-200',
+                }}
+                errorconfig={{
+                    className: `w-full h-96 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
+                    showtext: 1,
+                }}
+            />
             {TEST_CARD_LIST.map((item, index) => (
                 <div key={index}>
                     <Card>
                         <div className='flex'>
-                            <img
+                            <LazyImg
+                                loading='lazy'
                                 src={item.imgUrl}
                                 alt='img'
                                 className='w-44 h-44 rounded-2xl'
+                                loadingconfig={{
+                                    className:
+                                        'w-44 h-44 flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
+                                }}
+                                errorconfig={{
+                                    className: `w-44 h-44 flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
+                                    showtext: 1,
+                                }}
                             />
                             <div className='flex flex-col justify-between py-6 ml-4'>
                                 <div className='text-lg font-bold'>

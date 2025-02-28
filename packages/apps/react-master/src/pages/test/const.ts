@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://ayon1997.github.io/ImgCDN/';
+export const BASE_URL = 'https://ayon1997.github.io/ImgCDN/tinyPngImg/';
 
 export const TEST_HEADER_IMG = BASE_URL + 'card_test_header.jpg';
 

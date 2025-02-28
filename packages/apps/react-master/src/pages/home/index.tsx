@@ -16,6 +16,7 @@ const CardImg = ({
     };
     return (
         <img
+            loading='lazy'
             className='p-2 w-1/2'
             key={`card_img_${index}`}
             src={item.imgUrl}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Divider, Button } from 'antd-mobile';
 import { useNavigate } from 'react-router-dom';
+import LazyImg from '../lazyImg/index';
 
 interface ContentObj {
     imgUrl: string;
@@ -34,7 +35,20 @@ const Detail = ({ imgUrl, data }: { imgUrl: string; data: Data }) => {
     };
     return (
         <div className='flex flex-col h-full'>
-            <img src={imgUrl} alt='detail_img' className='w-full' />
+            <LazyImg
+                src={imgUrl}
+                alt='detail_img'
+                className='w-full h-80'
+                loading='lazy'
+                loadingconfig={{
+                    className:
+                        'w-full h-80 flex justify-center items-center flex-col bg-gray-200',
+                }}
+                errorconfig={{
+                    className: `w-full h-80 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
+                    showtext: 1,
+                }}
+            />
             <div className='flex-1 relative h-96 bg-white'>
                 <div className='absolute -top-4 w-full rounded-t-xl bg-white p-4'>
                     <div className='text-gray-700'>{data.header.title}</div>
@@ -47,7 +61,19 @@ const Detail = ({ imgUrl, data }: { imgUrl: string; data: Data }) => {
                             className={index ? 'mt-6' : ''}
                         >
                             <div className='flex items-center'>
-                                <img src={item.imgUrl} className='w-4' />
+                                <LazyImg
+                                    src={item.imgUrl}
+                                    className='w-4'
+                                    loading='lazy'
+                                    loadingconfig={{
+                                        className:
+                                            'w-3 h-4 flex justify-center items-center flex-col bg-gray-200 mr-1',
+                                        showtext: 1,
+                                    }}
+                                    errorconfig={{
+                                        className: 'w-3 h-4 bg-gray-200 mr-1 ',
+                                    }}
+                                />
                                 <div className='text-gray-700'>
                                     {item.title}
                                 </div>
@@ -64,24 +90,24 @@ const Detail = ({ imgUrl, data }: { imgUrl: string; data: Data }) => {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div className='flex justify-center items-center absolute left-0 right-0 bottom-0 pb-3'>
                     <MyDivider />
-                    <div className='flex justify-center items-center'>
-                        <Button
-                            className='w-3/4'
-                            color='primary'
-                            block
-                            shape='rounded'
-                            size='small'
-                            style={{
-                                '--background-color': '#00c195',
-                                '--border-color': '#00c195',
-                                '--text-color': '#f1fefd',
-                            }}
-                            onClick={() => onHandleClick(data.path)}
-                        >
-                            立即测试
-                        </Button>
-                    </div>
+                    <Button
+                        className='w-3/4'
+                        color='primary'
+                        block
+                        shape='rounded'
+                        size='small'
+                        style={{
+                            '--background-color': '#00c195',
+                            '--border-color': '#00c195',
+                            '--text-color': '#f1fefd',
+                        }}
+                        onClick={() => onHandleClick(data.path)}
+                    >
+                        立即测试
+                    </Button>
                 </div>
             </div>
         </div>
