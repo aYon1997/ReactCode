@@ -2,6 +2,7 @@ import React from 'react';
 import Swiper from '../../components/swiper/index';
 import { HOME_CARD_LIST, HOME_CARD_SINGLE } from './const';
 import { useNavigate } from 'react-router-dom';
+import LazyImg from '../../components/lazyImg/index';
 
 const CardImg = ({
     item,
@@ -15,13 +16,21 @@ const CardImg = ({
         navigate(path);
     };
     return (
-        <img
+        <LazyImg
             loading='lazy'
-            className='p-2 w-1/2'
+            className='p-2 w-1/2 h-home-card'
             key={`card_img_${index}`}
             src={item.imgUrl}
             alt={`img_${index}`}
             onClick={() => onHandleClick(item.path)}
+            loadingconfig={{
+                className:
+                    'p-2 w-1/2  min-w-1/2  h-home-card flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
+            }}
+            errorconfig={{
+                className: `p-2 w-1/2 min-w-1/2 h-home-card flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
+                showtext: 1,
+            }}
         />
     );
 };

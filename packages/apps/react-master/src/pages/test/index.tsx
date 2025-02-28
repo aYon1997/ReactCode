@@ -14,14 +14,14 @@ const Test = () => {
             <LazyImg
                 src={TEST_HEADER_IMG}
                 alt='img'
-                className='w-full h-96'
+                className='w-full h-80'
                 loading='lazy'
                 loadingconfig={{
                     className:
-                        'w-full h-96 flex justify-center items-center flex-col bg-gray-200',
+                        'w-full h-80 flex justify-center items-center flex-col bg-gray-200',
                 }}
                 errorconfig={{
-                    className: `w-full h-96 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
+                    className: `w-full h-80 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
                     showtext: 1,
                 }}
             />
@@ -33,13 +33,13 @@ const Test = () => {
                                 loading='lazy'
                                 src={item.imgUrl}
                                 alt='img'
-                                className='w-44 h-44 rounded-2xl'
+                                className='w-44 min-w-44 h-44 rounded-2xl'
                                 loadingconfig={{
                                     className:
-                                        'w-44 h-44 flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
+                                        'w-44 h-44 min-w-44 flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
                                 }}
                                 errorconfig={{
-                                    className: `w-44 h-44 flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
+                                    className: `w-44 min-w-44    h-44 flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
                                     showtext: 1,
                                 }}
                             />

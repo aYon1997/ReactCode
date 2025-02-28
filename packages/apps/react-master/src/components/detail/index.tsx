@@ -98,7 +98,6 @@ const Detail = ({ imgUrl, data }: { imgUrl: string; data: Data }) => {
                         color='primary'
                         block
                         shape='rounded'
-                        size='small'
                         style={{
                             '--background-color': '#00c195',
                             '--border-color': '#00c195',
