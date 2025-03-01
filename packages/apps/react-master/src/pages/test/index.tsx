@@ -6,22 +6,23 @@ import LazyImg from '../../components/lazyImg/index';
 
 const Test = () => {
     const navigate = useNavigate();
-    const onStartTestClick = () => {
-        navigate(TEST_DETAIL_TO_PATH);
+    const onStartTestClick = (type: string) => {
+        const queryString = new URLSearchParams({ type }).toString();
+        navigate(TEST_DETAIL_TO_PATH + '?' + queryString);
     };
     return (
         <>
             <LazyImg
                 src={TEST_HEADER_IMG}
                 alt='img'
-                className='w-full h-80'
+                className='w-full h-52'
                 loading='lazy'
                 loadingconfig={{
                     className:
-                        'w-full h-80 flex justify-center items-center flex-col bg-gray-200',
+                        'w-full h-52 flex justify-center items-center flex-col bg-gray-200',
                 }}
                 errorconfig={{
-                    className: `w-full h-80 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
+                    className: `w-full h-52 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
                     showtext: 1,
                 }}
             />
@@ -39,7 +40,7 @@ const Test = () => {
                                         'w-44 h-44 min-w-44 flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
                                 }}
                                 errorconfig={{
-                                    className: `w-44 min-w-44    h-44 flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
+                                    className: `w-44 min-w-44 h-44 flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
                                     showtext: 1,
                                 }}
                             />
@@ -57,7 +58,7 @@ const Test = () => {
                                         '--border-color': '#689acd',
                                         '--text-color': '#f1fefd',
                                     }}
-                                    onClick={() => onStartTestClick()}
+                                    onClick={() => onStartTestClick(item.title)}
                                 >
                                     开始测试
                                 </Button>

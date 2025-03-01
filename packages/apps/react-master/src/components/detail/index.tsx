@@ -28,10 +28,22 @@ const MyDivider = () => (
     />
 );
 
-const Detail = ({ imgUrl, data }: { imgUrl: string; data: Data }) => {
+const Detail = ({
+    imgUrl,
+    data,
+    type,
+}: {
+    imgUrl: string;
+    data: Data;
+    type: string;
+}) => {
     const navigate = useNavigate();
     const onHandleClick = (path: string) => {
-        navigate(path);
+        // URLSearchParams是JS内置的，将对象形式的查询参数转换为 URL 可以识别的查询字符串，方便取值，不用这个方法会取值困难，要各种location截取
+        const queryString = new URLSearchParams({
+            type,
+        }).toString();
+        navigate(path + '?' + queryString);
     };
     return (
         <div className='flex flex-col h-full'>

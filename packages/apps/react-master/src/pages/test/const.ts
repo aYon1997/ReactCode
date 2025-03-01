@@ -6,6 +6,8 @@ export const TEST_DETAIL_HEADER_IMG = BASE_URL + '11.jpg';
 
 export const TEST_DETAIL_TO_PATH = '/test_detail';
 
+export const TEST_RESULT_HEADER_IMG = BASE_URL + '14.jpg';
+
 export const TEST_CARD_LIST = [
     {
         imgUrl: BASE_URL + 'card_test_item1.jpg',
@@ -80,9 +82,11 @@ export const QUESTIONS_DATA = [
     {
         ask: '如果5+3=28，9+1=810，8+6=214，5+4=9，那么7+3=？？？',
         answers: ['1、104', '2、140', '3、410', '4、401'],
+        right: '410',
     },
     {
         ask: '如果1=5，2=10，3=15，4=20，那么5=？？？',
         answers: ['1、25', '2、35', '3、40', '4、5'],
+        right: '5',
     },
 ];
