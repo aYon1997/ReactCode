@@ -75,3 +75,14 @@ export const TEST_DETAIL_BODY = {
     ],
     path: '/test_detail_questions',
 };
+
+export const QUESTIONS_DATA = [
+    {
+        ask: '如果5+3=28，9+1=810，8+6=214，5+4=9，那么7+3=？？？',
+        answers: ['1、104', '2、140', '3、410', '4、401'],
+    },
+    {
+        ask: '如果1=5，2=10，3=15，4=20，那么5=？？？',
+        answers: ['1、25', '2、35', '3、40', '4、5'],
+    },
+];
