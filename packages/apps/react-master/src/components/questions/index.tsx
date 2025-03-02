@@ -132,12 +132,12 @@ export default function Questions(props: Props) {
             ) {
                 return 'text-white bg-green-400';
             }
-            return 'text-green-400 bg-green-100';
+            return 'text-green bg-green-100';
         };
 
         return (
             <div>
-                <div className='py-5 font-bold text-xl text-green-400 w-full text-center'>
+                <div className='py-5 font-bold text-xl text-green w-full text-center'>
                     目录
                 </div>
                 <div className='flex'>
