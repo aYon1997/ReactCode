@@ -9,6 +9,7 @@ interface Data {
     ask: string;
     right: string;
     value: number;
+    explain: string;
 }
 
 const SuspendCom = () => {
@@ -31,11 +32,14 @@ export default function result() {
     try {
         data = JSON.parse(searchParams.get('data') as string);
     } catch (error) {}
-    console.log(data);
 
     const rightData = data.filter((item) => {
         return item.answers[item.value - 1].includes(item.right);
     });
+
+    const getRightValue = (str: string) => {
+        return str.split('、')[1];
+    };
 
     return (
         <div className='w-full h-full'>
@@ -71,6 +75,33 @@ export default function result() {
             <div className='text-center my-4'>
                 共 {data.length} 题, 答对{rightData.length} 题, 答错
                 {data.length - rightData.length}题！
+            </div>
+            <div className='text-left my-4 p-8'>
+                {data.map((item, index) => {
+                    return (
+                        <div key={'explain_' + index} className='my-6'>
+                            <div className='leading-6'>
+                                {index + 1}、{item.ask}
+                                <span
+                                    className={
+                                        getRightValue(
+                                            item.answers[item.value - 1]
+                                        ) === item.right
+                                            ? 'text-green-500'
+                                            : 'text-red-500'
+                                    }
+                                >
+                                    （正确答案是{item.right}， 你的答案是
+                                    {getRightValue(
+                                        item.answers[item.value - 1]
+                                    )}
+                                    ）
+                                </span>
+                            </div>
+                            <div className='my-2 leading-6'>{item.explain}</div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

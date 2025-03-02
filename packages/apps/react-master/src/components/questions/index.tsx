@@ -8,6 +8,7 @@ interface Data {
     ask: string;
     answers: string[];
     value?: number;
+    explain: string;
 }
 
 interface Props {
