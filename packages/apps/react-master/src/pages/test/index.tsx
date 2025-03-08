@@ -3,11 +3,14 @@ import { Card, Button, Divider } from 'antd-mobile';
 import { TEST_CARD_LIST, TEST_HEADER_IMG, TEST_DETAIL_TO_PATH } from './const';
 import { useNavigate } from 'react-router-dom';
 import LazyImg from '../../components/lazyImg/index';
+import { MainDataItem } from './interface';
 
 const Test = () => {
     const navigate = useNavigate();
-    const onStartTestClick = (type: string) => {
-        const queryString = new URLSearchParams({ type }).toString();
+    const onStartTestClick = (data: MainDataItem) => {
+        const queryString = new URLSearchParams({
+            data: JSON.stringify(data),
+        }).toString();
         navigate(TEST_DETAIL_TO_PATH + '?' + queryString);
     };
     return (
@@ -15,42 +18,46 @@ const Test = () => {
             <LazyImg
                 src={TEST_HEADER_IMG}
                 alt='img'
-                className='w-full h-52'
+                className='w-full h-48'
                 loading='lazy'
                 loadingconfig={{
                     className:
-                        'w-full h-52 flex justify-center items-center flex-col bg-gray-200',
+                        'w-full h-48 flex justify-center items-center flex-col bg-gray-200',
                 }}
                 errorconfig={{
-                    className: `w-full h-52 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
+                    className: `w-full h-48 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
                     showtext: 1,
                 }}
             />
             {TEST_CARD_LIST.map((item, index) => (
-                <div key={index}>
+                <div
+                    key={index}
+                    className='flex items-center mx-5 border-b-custom-ccc-1'
+                >
                     <Card>
                         <div className='flex'>
                             <LazyImg
                                 loading='lazy'
                                 src={item.imgUrl}
                                 alt='img'
-                                className='w-44 min-w-44 h-44 rounded-2xl'
+                                className='w-32 min-w-32 h-32 rounded-2xl'
                                 loadingconfig={{
                                     className:
-                                        'w-44 h-44 min-w-44 flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
+                                        'w-32 h-32 min-w-32 flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
                                 }}
                                 errorconfig={{
-                                    className: `w-44 min-w-44 h-44 flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
+                                    className: `w-32 min-w-32 h-32 flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
                                     showtext: 1,
                                 }}
                             />
                             <div className='flex flex-col justify-between py-6 ml-4'>
-                                <div className='text-lg font-bold'>
+                                <div className='text-sm font-bold'>
                                     {item.title}
                                 </div>
                                 <Button
-                                    className='w-28'
+                                    className='w-24'
                                     color='primary'
+                                    size='small'
                                     block
                                     shape='rounded'
                                     style={{
@@ -58,9 +65,11 @@ const Test = () => {
                                         '--border-color': '#689acd',
                                         '--text-color': '#f1fefd',
                                     }}
-                                    onClick={() => onStartTestClick(item.title)}
+                                    onClick={() =>
+                                        onStartTestClick(item as MainDataItem)
+                                    }
                                 >
-                                    开始测试
+                                    立即测试
                                 </Button>
                             </div>
                         </div>

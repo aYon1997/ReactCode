@@ -6,3 +6,20 @@ export const FormatDate = () => {
 
     return `${year}-${month}-${day}`;
 };
+
+export const debounce = (func: Function, delay: number) => {
+    let timer: any = null;
+    return function () {
+        // @ts-ignore
+        const context = this;
+        const args = arguments;
+        // 如果定时器已经存在，清除它
+        if (timer) {
+            clearTimeout(timer);
+        }
+        // 设置一个新的定时器
+        timer = setTimeout(() => {
+            func.apply(context, args);
+        }, delay);
+    };
+};

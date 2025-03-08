@@ -1,6 +1,5 @@
 import React from 'react';
 import Questions from '../../components/questions/index';
-import { QUESTIONS_DATA } from './const';
 import { useSearchParams } from 'react-router-dom';
 
 export default function questions() {
@@ -8,6 +7,7 @@ export default function questions() {
     const [searchParams] = useSearchParams();
     // 从查询参数中获取特定的值
     const type = searchParams.get('type') as string;
+    const data = JSON.parse(searchParams.get('infoData') as string);
 
-    return <Questions data={QUESTIONS_DATA} type={type} />;
+    return <Questions data={data} type={type} />;
 }

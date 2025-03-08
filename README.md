@@ -133,3 +133,11 @@ pnpm add @typescript-eslint/eslint-plugin -D -w
 2、backup_template: 刚搭建完的项目的模板备份，不存在业务逻辑
 3、打包时记得切换 webpack.base.js 中的 publicPath，github pages 改成相对路径打包，其他情况改成绝对路径打包
 4、执行 npm run add-build ，自动将 dist 文件夹的内容复制到根目录
+
+### 每次开发前
+
+修改 webpack.base.js 中的 publicPath，然后 执行 npm run build, 然后 npm start
+
+### 每次提交代码前
+
+修改 webpack.base.js 中的 publicPath，然后 执行 npm run add-build

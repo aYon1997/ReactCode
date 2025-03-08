@@ -18,17 +18,17 @@ const CardImg = ({
     return (
         <LazyImg
             loading='lazy'
-            className='p-2 w-1/2 h-home-card'
+            className='m-2 w-45p h-home-card'
             key={`card_img_${index}`}
             src={item.imgUrl}
             alt={`img_${index}`}
             onClick={() => onHandleClick(item.path)}
             loadingconfig={{
                 className:
-                    'p-2 w-1/2  min-w-1/2  h-home-card flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
+                    'm-2 w-45p h-home-card flex justify-center items-center flex-col bg-gray-200  rounded-2xl',
             }}
             errorconfig={{
-                className: `p-2 w-1/2 min-w-1/2 h-home-card flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
+                className: `m-2 w-45p h-home-card flex justify-center items-center flex-col bg-gray-200 text-gray-400  rounded-2xl`,
                 showtext: 1,
             }}
         />
@@ -43,7 +43,6 @@ const MyCard = () => {
                     <CardImg item={item} index={index} key={'batch_' + index} />
                 ))}
             </div>
-
             {HOME_CARD_SINGLE.map((item, index) => (
                 <CardImg item={item} index={index} key={'single' + index} />
             ))}

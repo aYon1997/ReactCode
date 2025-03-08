@@ -11,7 +11,10 @@ module.exports = {
             },
             height: {
                 'full-vh': '100vh',
-                'home-card': '16rem',
+                'home-card': '12rem',
+            },
+            width: {
+                '45p': '45%',
             },
         },
     },

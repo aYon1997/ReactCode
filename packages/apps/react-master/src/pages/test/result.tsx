@@ -34,7 +34,7 @@ export default function result() {
     } catch (error) {}
 
     const rightData = data.filter((item) => {
-        return item.answers[item.value - 1].includes(item.right);
+        return item.answers[item.value].includes(item.right);
     });
 
     const getRightValue = (str: string) => {
@@ -71,34 +71,37 @@ export default function result() {
             <div className='mt-24 my-3 px-8 text-[#9f9f9f] text-right'>
                 报告生成时间：{FormatDate()}
             </div>
-            <div className='text-center text-[#e7e7e7]'>评估结果仅供参考</div>
-            <div className='text-center my-4'>
-                共 {data.length} 题, 答对{rightData.length} 题, 答错
-                {data.length - rightData.length}题！
+            <div className='text-center text-[#e7e7e7]  break-all'>
+                评估结果仅供参考
+            </div>
+            <div className='text-center my-4  break-all'>
+                {type === '寻找适合你的恋爱色彩'
+                    ? `共 ${data.length} 题，无标准答案，详情请见报告！`
+                    : `共 ${data.length} 题, 答对${rightData.length} 题, 答错
+                    ${data.length - rightData.length}题！`}
             </div>
             <div className='text-left my-4 p-8'>
                 {data.map((item, index) => {
                     return (
                         <div key={'explain_' + index} className='my-6'>
-                            <div className='leading-6'>
+                            <div className='leading-6  break-all'>
                                 {index + 1}、{item.ask}
-                                <span
+                                <div
                                     className={
                                         getRightValue(
-                                            item.answers[item.value - 1]
+                                            item.answers[item.value]
                                         ) === item.right
-                                            ? 'text-green-500'
-                                            : 'text-red-500'
+                                            ? 'text-green-500 break-all'
+                                            : 'text-red-500 break-all'
                                     }
                                 >
-                                    （正确答案是{item.right}， 你的答案是
-                                    {getRightValue(
-                                        item.answers[item.value - 1]
-                                    )}
-                                    ）
-                                </span>
+                                    （正确答案是：{item.right}， 你的答案是：
+                                    {getRightValue(item.answers[item.value])}）
+                                </div>
                             </div>
-                            <div className='my-2 leading-6'>{item.explain}</div>
+                            <div className='my-2 leading-6 text-gray-400  break-all'>
+                                {item.explain}
+                            </div>
                         </div>
                     );
                 })}

@@ -7,7 +7,7 @@ export const HOME_CARD_LIST = [
     },
     {
         imgUrl: BASE_IMG_URL + 'card_article.jpg',
-        path: '/test',
+        path: '/article',
     },
     {
         imgUrl: BASE_IMG_URL + 'card_relax.jpg',

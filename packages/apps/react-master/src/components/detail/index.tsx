@@ -18,6 +18,13 @@ interface Data {
     path: string;
 }
 
+interface InfoData {
+    ask: string;
+    answers: string[];
+    right: string;
+    explain: string;
+}
+
 const MyDivider = () => (
     <Divider
         style={{
@@ -32,16 +39,19 @@ const Detail = ({
     imgUrl,
     data,
     type,
+    infoData,
 }: {
     imgUrl: string;
     data: Data;
     type: string;
+    infoData: InfoData;
 }) => {
     const navigate = useNavigate();
     const onHandleClick = (path: string) => {
         // URLSearchParams是JS内置的，将对象形式的查询参数转换为 URL 可以识别的查询字符串，方便取值，不用这个方法会取值困难，要各种location截取
         const queryString = new URLSearchParams({
             type,
+            infoData: JSON.stringify(infoData),
         }).toString();
         navigate(path + '?' + queryString);
     };
@@ -50,21 +60,25 @@ const Detail = ({
             <LazyImg
                 src={imgUrl}
                 alt='detail_img'
-                className='w-full h-80'
+                className='w-full h-48'
                 loading='lazy'
                 loadingconfig={{
                     className:
-                        'w-full h-80 flex justify-center items-center flex-col bg-gray-200',
+                        'w-full h-48 flex justify-center items-center flex-col bg-gray-200',
                 }}
                 errorconfig={{
-                    className: `w-full h-80 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
+                    className: `w-full h-48 flex justify-center items-center flex-col bg-gray-200 text-gray-400`,
                     showtext: 1,
                 }}
             />
             <div className='flex-1 relative h-96 bg-white'>
                 <div className='absolute -top-4 w-full rounded-t-xl bg-white p-4'>
-                    <div className='text-gray-700'>{data.header.title}</div>
-                    <div className='text-gray-400'>{data.header.subtitle}</div>
+                    <div className='text-gray-700 my-1'>
+                        {data.header.title}
+                    </div>
+                    <div className='text-gray-400 my-2'>
+                        {data.header.subtitle}
+                    </div>
                     <MyDivider />
 
                     {data.content.map((item, index) => (
@@ -72,7 +86,7 @@ const Detail = ({
                             key={'title_' + index}
                             className={index ? 'mt-6' : ''}
                         >
-                            <div className='flex items-center'>
+                            <div className='flex items-center my-1'>
                                 <LazyImg
                                     src={item.imgUrl}
                                     className='w-4'
@@ -94,7 +108,7 @@ const Detail = ({
                                 {item.content.map((subItem, subIndex) => (
                                     <div
                                         key={'subtitle_' + subIndex}
-                                        className='text-gray-400'
+                                        className='text-gray-400 my-1'
                                     >
                                         {subItem}
                                     </div>

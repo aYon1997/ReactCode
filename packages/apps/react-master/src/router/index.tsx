@@ -5,6 +5,7 @@ import Test from '../pages/test';
 import TestDetail from '../pages/test/detail';
 import TestDetailQuestions from '../pages/test/questions';
 import TestResult from '../pages/test/result';
+import Article from '../pages/article';
 
 export interface extraBizObject {
     title?: string;
@@ -38,5 +39,10 @@ export const router: Array<ZHRouter> = [
         path: '/test_result',
         element: <TestResult />,
         title: '测试结果',
+    },
+    {
+        path: '/article',
+        element: <Article />,
+        title: '心灵文章',
     },
 ];

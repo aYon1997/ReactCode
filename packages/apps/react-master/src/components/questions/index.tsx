@@ -25,10 +25,11 @@ export default function Questions(props: Props) {
     // 定义一个状态来控制显示隐藏
     const [isVisible, setIsVisible] = useState(false);
 
-    let doneRate =
+    let doneRate = (
         (answersList.filter((item) => item.value || item.value === 0).length /
             answersList.length) *
-        100;
+        100
+    ).toFixed(1);
 
     const prev = () => {
         if (curPage === 1) {
@@ -103,7 +104,7 @@ export default function Questions(props: Props) {
                     {answersList[curPage - 1].answers.map((item, index) => (
                         <div
                             key={index}
-                            className={`${answersList[curPage - 1].value === index ? 'bg-green-200 text-white' : 'bg-gray-100 text-black'} my-2 p-2 rounded-sm font-bold`}
+                            className={`${answersList[curPage - 1].value === index ? 'bg-green-200 text-white' : 'bg-gray-100 text-black'} my-2 p-2 rounded-sm font-bold break-words`}
                             onClick={() => onAnswerClick(index)}
                         >
                             {item}
@@ -141,18 +142,16 @@ export default function Questions(props: Props) {
                 <div className='py-5 font-bold text-xl text-green w-full text-center'>
                     目录
                 </div>
-                <div className='flex'>
-                    <Space>
-                        {arr.map((item: number, index: number) => (
-                            <div
-                                key={index}
-                                className={`w-7 h-7 p-1 mt-1 rounded-full flex justify-center items-center ${getBgStyle(index)}`}
-                                onClick={() => onHandleMenuClick(index + 1)}
-                            >
-                                {item}
-                            </div>
-                        ))}
-                    </Space>
+                <div className='flex flex-wrap'>
+                    {arr.map((item: number, index: number) => (
+                        <div
+                            key={index}
+                            className={`w-7 h-7 p-1 m-2 rounded-full flex justify-center items-center ${getBgStyle(index)}`}
+                            onClick={() => onHandleMenuClick(index + 1)}
+                        >
+                            {item}
+                        </div>
+                    ))}
                 </div>
             </div>
         );
@@ -161,9 +160,9 @@ export default function Questions(props: Props) {
     // 答题完成率组件
     const CircleCom = () => {
         return (
-            <div className='-mt-12 w-28 h-28 rounded-full bg-white flex justify-center items-center absolute left-0 right-0 m-auto '>
+            <div className='w-28 h-28 rounded-full bg-white flex justify-center items-center fixed left-0 right-0 m-auto top-11'>
                 <ProgressCircle
-                    percent={doneRate}
+                    percent={Number(doneRate)}
                     style={{
                         '--size': '6rem',
                         '--fill-color': '#53b53a',
@@ -197,12 +196,14 @@ export default function Questions(props: Props) {
     };
 
     return (
-        <div className='h-full w-full bg-gradient-to-b from-[#99e9a0] to-[#deffca] flex justify-center relative'>
-            <div className='w-3/4 h-2/3 mt-24 bg-white rounded-3xl relative px-5'>
-                {isVisible ? <div></div> : <CircleCom />}
-                {isVisible ? <MenuCom /> : <QuestionCom />}
+        <>
+            <div className='h-full w-full bg-gradient-to-b from-[#99e9a0] to-[#deffca] flex justify-center relative'>
+                <div className='w-3/4 h-2/3 mt-24 bg-white rounded-3xl relative p-5 overflow-auto'>
+                    {isVisible ? <MenuCom /> : <QuestionCom />}
+                </div>
+                {isVisible ? <div></div> : <FooterCom />}
             </div>
-            {isVisible ? <div></div> : <FooterCom />}
-        </div>
+            {isVisible ? <div></div> : <CircleCom />}
+        </>
     );
 }
