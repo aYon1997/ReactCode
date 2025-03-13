@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { TabBar } from 'antd-mobile';
-import { ARTICLE_HEADER_IMG, ARTICLE_LIST } from './const';
+import { ARTICLE_HEADER_IMG, TAB_BAR_LIST, TAB_BAR_TYPE } from './const';
 import LazyImg from '../../components/lazyImg/index';
 import { debounce } from '../../util/index';
+import SelfGrowth from './selfGrowth';
+import PsychologyScience from './psychologyScience';
 
 const Article = () => {
     const [isFixedTop, setIsFixedTop] = useState(false);
+    const [current, setCurrent] = useState(TAB_BAR_TYPE.selfGrowth);
 
     const fixedTopClass = 'fixed left-0 right-0 top-0';
 
@@ -34,6 +37,25 @@ const Article = () => {
         };
     }, []);
 
+    const handleChange = (key: string) => {
+        setCurrent(key);
+    };
+
+    const renderCurrentComponent = () => {
+        if (current === TAB_BAR_TYPE.selfGrowth) {
+            return <SelfGrowth />;
+        }
+        if (current === TAB_BAR_TYPE.psychologyScience) {
+            return <PsychologyScience />;
+        }
+        if (current === TAB_BAR_TYPE.psychologyScience) {
+            return <PsychologyScience />;
+        }
+        if (current === TAB_BAR_TYPE.psychologyScience) {
+            return <PsychologyScience />;
+        }
+    };
+
     return (
         <>
             <LazyImg
@@ -53,57 +75,22 @@ const Article = () => {
             <div className='bg-gray-100 min-h-screen'>
                 {/* 顶部导航栏 */}
                 <div className={isFixedTop ? fixedTopClass : ''}>
-                    <TabBar className='bg-white'>
-                        <TabBar.Item
-                            title={<span className='text-lg'>成长狂飙</span>}
-                            key='self-growth'
-                        />
-                        <TabBar.Item
-                            title={<span className='text-lg'>迅笔如锋</span>}
-                            key='psychology-science'
-                        />
-                        <TabBar.Item
-                            title={<span className='text-lg'>世相沉浮</span>}
-                            key='workplace-interpersonal'
-                        />
-                        <TabBar.Item
-                            title={<span className='text-lg'>云中漫步</span>}
-                            key='emotion-pressure'
-                        />
+                    <TabBar className='bg-white' onChange={handleChange}>
+                        {TAB_BAR_LIST.map((item) => (
+                            <TabBar.Item
+                                title={
+                                    <span className='text-lg'>
+                                        {item.title}
+                                    </span>
+                                }
+                                key={item.name}
+                            />
+                        ))}
                     </TabBar>
                 </div>
 
                 {/* 内容卡片 */}
-                <div className='container mx-auto p-4'>
-                    {ARTICLE_LIST.map((item, index) => (
-                        <div
-                            key={index}
-                            className='bg-white rounded-lg shadow-md mb-4 overflow-hidden'
-                        >
-                            <div className='flex items-start p-4'>
-                                <div className='w-1/2'>
-                                    <p className='text-pink-500 font-bold mb-2'>
-                                        “
-                                    </p>
-                                    <p className='text-lg'>{item.text}</p>
-                                    <p className='text-pink-500 font-bold mt-2'>
-                                        ”
-                                    </p>
-                                </div>
-                                <div className='w-1/2'>
-                                    <img
-                                        src={item.img}
-                                        alt={`article-${index}`}
-                                        className='w-full h-auto'
-                                    />
-                                </div>
-                            </div>
-                            <div className='bg-gray-200 p-2'>
-                                <p className='text-sm'>{item.desc}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                {renderCurrentComponent()}
             </div>
         </>
     );

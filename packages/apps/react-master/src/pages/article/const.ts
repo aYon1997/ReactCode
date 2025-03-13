@@ -109,3 +109,29 @@ export const ARTICLE_LIST = [
         desc: '挑战自我能让我们突破极限，发现自己的潜力，实现自我成长的新跨越。',
     },
 ];
+
+export const TAB_BAR_TYPE = {
+    selfGrowth: 'selfGrowth',
+    psychologyScience: 'psychologyScience',
+    workplaceInterpersonal: 'workplaceInterpersonal',
+    emotionPressure: 'emotionPressure',
+};
+
+export const TAB_BAR_LIST = [
+    {
+        title: '成长狂飙',
+        name: TAB_BAR_TYPE.selfGrowth,
+    },
+    {
+        title: '迅笔如锋',
+        name: TAB_BAR_TYPE.psychologyScience,
+    },
+    {
+        title: '世相沉浮',
+        name: TAB_BAR_TYPE.workplaceInterpersonal,
+    },
+    {
+        title: '云中漫步',
+        name: TAB_BAR_TYPE.emotionPressure,
+    },
+];
