@@ -5,6 +5,8 @@ import LazyImg from '../../components/lazyImg/index';
 import { debounce } from '../../util/index';
 import SelfGrowth from './selfGrowth';
 import PsychologyScience from './psychologyScience';
+import EmotionPressure from './emotionPressure';
+import WorkplaceInterpersonal from './workplaceInterpersonal';
 
 const Article = () => {
     const [isFixedTop, setIsFixedTop] = useState(false);
@@ -48,11 +50,11 @@ const Article = () => {
         if (current === TAB_BAR_TYPE.psychologyScience) {
             return <PsychologyScience />;
         }
-        if (current === TAB_BAR_TYPE.psychologyScience) {
-            return <PsychologyScience />;
+        if (current === TAB_BAR_TYPE.emotionPressure) {
+            return <EmotionPressure />;
         }
-        if (current === TAB_BAR_TYPE.psychologyScience) {
-            return <PsychologyScience />;
+        if (current === TAB_BAR_TYPE.workplaceInterpersonal) {
+            return <WorkplaceInterpersonal />;
         }
     };
 

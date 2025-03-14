@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Space, Badge } from 'antd-mobile';
+import { Card, Badge } from 'antd-mobile';
 import axios from 'axios';
 
 // 格式化日期函数
